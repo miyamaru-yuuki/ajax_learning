@@ -25,7 +25,6 @@
             }
 
             $(document).on("click",".gname",function(){
-                $("#gameshousai").empty();
                 var gid = $(this).attr("href");
                 $.getJSON("/api/game/" +gid, function(json){
                         $("#gameshousai").append( '<tr><td>' +json.gameData.gname+ '</td><td>' +json.gameData.playersnumbermin+ '</td><td>' +json.gameData.playersnumbermax+ '</td><td>' +json.gameData.playtime+ '</td><td>' +json.gameData.recommendedage+ '</td></tr>')

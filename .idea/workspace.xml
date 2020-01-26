@@ -19,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GameController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="66" column="10" lean-forward="true" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="10" />
+            <state relative-caret-position="990">
+              <caret line="66" column="10" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="10" />
               <folding>
                 <element signature="e#40#68#0#PHP" expanded="true" />
               </folding>
@@ -31,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="24" column="13" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="13" />
+            <state relative-caret-position="222">
+              <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -167,7 +167,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -217,6 +216,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -299,18 +299,19 @@
       <workItem from="1580018122994" duration="166000" />
       <workItem from="1580018345973" duration="27000" />
       <workItem from="1580018404474" duration="113000" />
-      <workItem from="1580018539091" duration="663000" />
+      <workItem from="1580018539091" duration="1438000" />
+      <workItem from="1580021045769" duration="7000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7881000" />
+    <option name="totallyTimeSpent" value="8663000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="836" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22889842" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23175965" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -379,8 +380,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GameController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="66" column="10" lean-forward="true" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="10" />
+        <state relative-caret-position="990">
+          <caret line="66" column="10" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="10" />
           <folding>
             <element signature="e#40#68#0#PHP" expanded="true" />
           </folding>
@@ -389,8 +390,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="13" />
+        <state relative-caret-position="222">
+          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
         </state>
       </provider>
     </entry>
