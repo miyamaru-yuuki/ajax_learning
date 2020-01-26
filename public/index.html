@@ -24,10 +24,9 @@
             }
 
             $(document).on("click",".gname",function(){
-                $("#gameshousai").empty();
                 var gid = $(this).attr("href");
                 $.getJSON("/api/game/" +gid, function(json){
-                        $("#gameshousai").append( '<tr><td>' +json.gameData.gname+ '</td><td>' +json.gameData.playersnumbermin+ '</td><td>' +json.gameData.playersnumbermax+ '</td><td>' +json.gameData.playtime+ '</td><td>' +json.gameData.recommendedage+ '</td></tr>')
+                    $("#gameshousai").html( '<tr><td>' +json.gameData.gname+ '</td><td>' +json.gameData.playersnumbermin+ '</td><td>' +json.gameData.playersnumbermax+ '</td><td>' +json.gameData.playtime+ '</td><td>' +json.gameData.recommendedage+ '</td></tr>')
                 });
                 return false;
             });
@@ -49,7 +48,8 @@
 
     <table>
         <thead><tr class="head1"><th>ゲーム名</th><th>プレイ可能な人数(最小)</th><th>プレイ可能な人数(最大)</th><th>標準プレイ時間</th><th>推奨年齢</th></tr></thead>
-        <tbody id="gameshousai"></tbody>
+        <tbody id="gameshousai">
+        </tbody>
     </table>
 
 </main>
