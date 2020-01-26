@@ -15,22 +15,53 @@
             // ここにソースを書きます。
             showgname();
 
+            // function showgname(){
+            //     $.getJSON("/api/game/", function(json){
+            //         json.gameData.forEach(function(data){
+            //             $("#gname").append( '<tr><td>' +'<a href="' +data.gid +'" class="gname">'+data.gname+ '</a></td></tr>')
+            //         });
+            //     });
+            // }
+
             function showgname(){
-                $.getJSON("/api/game/", function(json){
+            $.ajax({
+                url     : "/api/game/",
+                type    : "GET",
+                async   : true,
+                data    : null,
+                dataType: "json",
+                success : function(json) {
+                    //成功時の処理
                     json.gameData.forEach(function(data){
                         $("#gname").append( '<tr><td>' +'<a href="' +data.gid +'" class="gname">'+data.gname+ '</a></td></tr>')
                     });
-                });
+                }
+            });
             }
 
             $(document).on("click",".gname",function(){
                 var gid = $(this).attr("href");
-                $.getJSON("/api/game/" +gid, function(json){
-                    $("#gnametd").text(json.gameData.gname)
-                    $("#playersnumbermintd").text(json.gameData.playersnumbermin)
-                    $("#playersnumbermaxtd").text(json.gameData.playersnumbermax)
-                    $("#playtimetd").text(json.gameData.playtime)
-                    $("#recommendedagetd").text(json.gameData.recommendedage)
+                // $.getJSON("/api/game/" +gid, function(json){
+                //     $("#gnametd").text(json.gameData.gname)
+                //     $("#playersnumbermintd").text(json.gameData.playersnumbermin)
+                //     $("#playersnumbermaxtd").text(json.gameData.playersnumbermax)
+                //     $("#playtimetd").text(json.gameData.playtime)
+                //     $("#recommendedagetd").text(json.gameData.recommendedage)
+                // });
+                $.ajax({
+                    url     : "/api/game/" +gid,
+                    type    : "GET",
+                    async   : true,
+                    data    : null,
+                    dataType: "json",
+                    success : function(json) {
+                        //成功時の処理
+                            $("#gnametd").text(json.gameData.gname)
+                            $("#playersnumbermintd").text(json.gameData.playersnumbermin)
+                            $("#playersnumbermaxtd").text(json.gameData.playersnumbermax)
+                            $("#playtimetd").text(json.gameData.playtime)
+                            $("#recommendedagetd").text(json.gameData.recommendedage)
+                    }
                 });
                 return false;
             });
@@ -62,6 +93,17 @@
         </tr>
         </tbody>
     </table>
+
+    <form action="addkakunin.php" method="post">
+        <p>ゲーム名：<input type="text" name="gname"></p>
+        <p>プレイ可能な人数(最小)：<input type="number" name="playersnumbermin"></p>
+        <p>プレイ可能な人数(最大)：<input type="number" name="playersnumbermax"></p>
+        <p>標準プレイ時間：<input type="number" name="playtime"></p>
+        <p>推奨年齢：<input type="number" name="recommendedage"></p>
+
+        <input type="submit" value="追加">
+    </form>
+
 
 </main>
 <footer>
