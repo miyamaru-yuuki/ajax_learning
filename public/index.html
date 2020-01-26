@@ -19,14 +19,17 @@
                 $("table tbody").empty();
                 $.getJSON("/api/game/", function(json){
                     json.gameData.forEach(function(data){
-                        $("table tbody").append( '<tr><td>' +'<a href="api/game/' +data.gid +'" class="gname">'+data.gname+ '</a></td></tr>')
+                        $("#gname").append( '<tr><td>' +'<a href="' +data.gid +'" class="gname">'+data.gname+ '</a></td></tr>')
                     });
                 });
             }
 
             $(document).on("click",".gname",function(){
-                $("table").hide();
-                $("table tbody").append( '<tr><td>' +'<a href="api/game/' +data.gid +'" class="gname">'+data.gname+ '</a></td></tr>')
+                $("#gameshousai").empty();
+                var gid = $(this).attr("href");
+                $.getJSON("/api/game/" +gid, function(json){
+                        $("#gameshousai").append( '<tr><td>' +json.gameData.gname+ '</td><td>' +json.gameData.playersnumbermin+ '</td><td>' +json.gameData.playersnumbermax+ '</td><td>' +json.gameData.playtime+ '</td><td>' +json.gameData.recommendedage+ '</td></tr>')
+                });
                 return false;
             });
         })
@@ -41,10 +44,13 @@
 <main>
 
     <table>
-        <thead>
-        <th>ゲーム名</th>
-        </thead>
-        <tbody></tbody>
+        <thead><tr><th>ゲーム名</th></tr></thead>
+        <tbody id="gname"></tbody>
+    </table>
+
+    <table>
+        <thead><tr class="head1"><th>ゲーム名</th><th>プレイ可能な人数(最小)</th><th>プレイ可能な人数(最大)</th><th>標準プレイ時間</th><th>推奨年齢</th></tr></thead>
+        <tbody id="gameshousai"></tbody>
     </table>
 
 </main>
