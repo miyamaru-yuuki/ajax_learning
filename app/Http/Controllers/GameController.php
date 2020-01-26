@@ -18,7 +18,6 @@ class GameController extends Controller
         $game = new Game();
         $gameData = $game->all();
 
-//        return  $gameData->toArray();
         return response()->json(['gameData' => $gameData]);
     }
 
