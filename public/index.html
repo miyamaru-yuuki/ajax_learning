@@ -16,7 +16,6 @@
             showgname();
 
             function showgname(){
-                $("table tbody").empty();
                 $.getJSON("/api/game/", function(json){
                     json.gameData.forEach(function(data){
                         $("#gname").append( '<tr><td>' +'<a href="' +data.gid +'" class="gname">'+data.gname+ '</a></td></tr>')
@@ -25,6 +24,7 @@
             }
 
             $(document).on("click",".gname",function(){
+                $("#gameshousai").empty();
                 var gid = $(this).attr("href");
                 $.getJSON("/api/game/" +gid, function(json){
                         $("#gameshousai").append( '<tr><td>' +json.gameData.gname+ '</td><td>' +json.gameData.playersnumbermin+ '</td><td>' +json.gameData.playersnumbermax+ '</td><td>' +json.gameData.playtime+ '</td><td>' +json.gameData.recommendedage+ '</td></tr>')
