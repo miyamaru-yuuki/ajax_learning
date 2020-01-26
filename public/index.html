@@ -19,10 +19,16 @@
                 $("table tbody").empty();
                 $.getJSON("/api/game/", function(json){
                     json.gameData.forEach(function(data){
-                        $("table tbody").append( '<tr><td>' +data.gname+ '</td></tr>')
+                        $("table tbody").append( '<tr><td>' +'<a href="api/game/' +data.gid +'" class="gname">'+data.gname+ '</a></td></tr>')
                     });
                 });
             }
+
+            $(document).on("click",".gname",function(){
+                $("table").hide();
+                $("table tbody").append( '<tr><td>' +'<a href="api/game/' +data.gid +'" class="gname">'+data.gname+ '</a></td></tr>')
+                return false;
+            });
         })
     </script>
 </head>

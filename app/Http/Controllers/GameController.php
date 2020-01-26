@@ -48,9 +48,12 @@ class GameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($gid)
     {
-        //
+        $game = new Game();
+        $gameData = $game->find($gid);
+
+        return response()->json(['gameData' => $gameData]);
     }
 
     /**
