@@ -28,7 +28,7 @@ class GameController extends Controller
      */
     public function create()
     {
-        //
+        dd(1);
     }
 
     /**
@@ -37,9 +37,23 @@ class GameController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+        $gname = $request->input('gname');
+        $playersnumbermin = $request->input('playersnumbermin');
+        $playersnumbermax = $request->input('playersnumbermax');
+        $playtime = $request->input('playtime');
+        $recommendedage = $request->input('recommendedage');
+
+//        if(!isset($sname) OR !isset($tanka)){
+//            return response()->json(['result' => false]);
+//        }
+//
+//        $model = new Shouhin();
+//        $model = $model->create(['sname' => $sname, 'tanka' => $tanka]);
+//
+//        $sid = $model->sid;
+//
+//        return response()->json(['result' => true,'sid' => $sid]);
     }
 
     /**

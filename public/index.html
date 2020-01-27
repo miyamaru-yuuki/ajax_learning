@@ -15,14 +15,6 @@
             // ここにソースを書きます。
             showgname();
 
-            // function showgname(){
-            //     $.getJSON("/api/game/", function(json){
-            //         json.gameData.forEach(function(data){
-            //             $("#gname").append( '<tr><td>' +'<a href="' +data.gid +'" class="gname">'+data.gname+ '</a></td></tr>')
-            //         });
-            //     });
-            // }
-
             function showgname(){
             $.ajax({
                 url     : "/api/game/",
@@ -41,13 +33,6 @@
 
             $(document).on("click",".gname",function(){
                 var gid = $(this).attr("href");
-                // $.getJSON("/api/game/" +gid, function(json){
-                //     $("#gnametd").text(json.gameData.gname)
-                //     $("#playersnumbermintd").text(json.gameData.playersnumbermin)
-                //     $("#playersnumbermaxtd").text(json.gameData.playersnumbermax)
-                //     $("#playtimetd").text(json.gameData.playtime)
-                //     $("#recommendedagetd").text(json.gameData.recommendedage)
-                // });
                 $.ajax({
                     url     : "/api/game/" +gid,
                     type    : "GET",
@@ -65,6 +50,29 @@
                 });
                 return false;
             });
+
+            $('#fm1').submit(function(){
+
+                var gname = $("[name=gname]").val();
+                var playersnumbermin = $("[name=playersnumbermin]").val();
+                var playersnumbermax = $("[name=playersnumbermax]").val();
+                var playtime = $("[name=playtime]").val();
+                var recommendedage = $("[name=recommendedage]").val();
+
+                $.ajax({
+                    url     : "/api/game",
+                    type    : "POST",
+                    async   : true,
+                    data    : gname,playersnumbermin,playersnumbermax,playtime,recommendedage,
+                    dataType: "json",
+                    success : function(json) {
+                        //成功時の処理
+
+                    }
+                });
+                return false;
+            });
+
         })
     </script>
 </head>
@@ -94,16 +102,15 @@
         </tbody>
     </table>
 
-    <form action="addkakunin.php" method="post">
+    <form id="fm1" method="post">
         <p>ゲーム名：<input type="text" name="gname"></p>
         <p>プレイ可能な人数(最小)：<input type="number" name="playersnumbermin"></p>
         <p>プレイ可能な人数(最大)：<input type="number" name="playersnumbermax"></p>
         <p>標準プレイ時間：<input type="number" name="playtime"></p>
         <p>推奨年齢：<input type="number" name="recommendedage"></p>
 
-        <input type="submit" value="追加">
+        <input type="submit" value="追加" id="submit">
     </form>
-
 
 </main>
 <footer>
