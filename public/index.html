@@ -63,11 +63,12 @@
                     url     : "/api/game",
                     type    : "POST",
                     async   : true,
-                    data    : gname,playersnumbermin,playersnumbermax,playtime,recommendedage,
+                    data    : {gname:gname,playersnumbermin:playersnumbermin,playersnumbermax:playersnumbermax,playtime:playtime,recommendedage:recommendedage},
                     dataType: "json",
                     success : function(json) {
                         //成功時の処理
-
+                        $("#gname").empty();
+                        showgname();
                     }
                 });
                 return false;
