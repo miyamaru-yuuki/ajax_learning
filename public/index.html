@@ -67,8 +67,10 @@
                     dataType: "json",
                     success : function(json) {
                         //成功時の処理
-                        $("#gname").empty();
-                        showgname();
+                        if(json){
+                            $("#gname").empty();
+                            showgname();
+                        }
                     }
                 });
                 return false;
