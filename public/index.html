@@ -53,23 +53,26 @@
 
             $(document).on("click",".del",function(){
                 var gid = $(this).attr("href");
-                $.ajax({
-                    url     : "/api/game/" +gid,
-                    type    : "POST",
-                    async   : true,
-                    data    : {"gid":gid, "_method":"DELETE"},
-                    dataType: "json",
-                    success : function(json) {
-                        //成功時の処理
-                        if(json.result) {
-                            $("#gname").empty();
-                            showgname();
+                if(!confirm('本当に削除しますか？')) {
+                    return false;
+                }
+                    $.ajax({
+                        url: "/api/game/" + gid,
+                        type: "POST",
+                        async: true,
+                        data: {"gid": gid, "_method": "DELETE"},
+                        dataType: "json",
+                        success: function (json) {
+                            //成功時の処理
+                            if (json.result) {
+                                $("#gname").empty();
+                                showgname();
+                            }
+                        },
+                        error: function () {
+                            alert('http通信に失敗しました');
                         }
-                    },
-                    error: function() {
-                        alert('http通信に失敗しました');
-                    }
-                });
+                    });
                 return false;
             });
 
@@ -92,6 +95,12 @@
                         if(json.result){
                             $("#gname").empty();
                             showgname();
+
+                            $("[name=gname]").val('');
+                            $("[name=playersnumbermin]").val('');
+                            $("[name=playersnumbermax]").val('');
+                            $("[name=playtime]").val('');
+                            $("[name=recommendedage]").val('');
                         }
                     },
                     error: function() {
