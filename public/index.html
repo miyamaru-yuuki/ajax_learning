@@ -71,6 +71,9 @@
                             $("#gname").empty();
                             showgname();
                         }
+                    },
+                    error: function() {
+                        alert('Ajax通信に失敗しました');
                     }
                 });
                 return false;
