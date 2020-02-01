@@ -25,7 +25,7 @@
                 success : function(json) {
                     //成功時の処理
                     json.gameData.forEach(function(data){
-                        $("#gname").append( '<tr><td>' +'<a href="' +data.gid +'" class="gname">'+data.gname+ '</a></td></tr>')
+                        $("#gname").append( '<tr><td>' +'<a href="' +data.gid +'" class="gname">'+data.gname+ '</a></td><td>' +'<a href="' +data.gid +'" class="del">削除</a></td></tr>')
                     });
                 }
             });
@@ -46,6 +46,26 @@
                             $("#playersnumbermaxtd").text(json.gameData.playersnumbermax)
                             $("#playtimetd").text(json.gameData.playtime)
                             $("#recommendedagetd").text(json.gameData.recommendedage)
+                    }
+                });
+                return false;
+            });
+
+            $(document).on("click",".del",function(){
+                var gid = $(this).attr("href");
+                $.ajax({
+                    url     : "/api/game/" +gid,
+                    type    : "POST",
+                    async   : true,
+                    data    : {"gid":gid, "_method":"DELETE"},
+                    dataType: "json",
+                    success : function() {
+                        //成功時の処理
+                        $("#gname").empty();
+                        showgname();
+                    },
+                    error: function() {
+                        alert('http通信に失敗しました');
                     }
                 });
                 return false;
@@ -91,7 +111,7 @@
 <main>
 
     <table>
-        <thead><tr><th>ゲーム名</th></tr></thead>
+        <thead><tr><th>ゲーム名</th><th>削除</th></tr></thead>
         <tbody id="gname"></tbody>
     </table>
 

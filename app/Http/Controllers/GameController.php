@@ -97,8 +97,12 @@ class GameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($gid)
     {
-        //
+        $game = new Game();
+        $gameData = $game->find($gid);
+        $gameData->delete();
+
+        return redirect('/api/game');
     }
 }
