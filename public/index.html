@@ -95,7 +95,7 @@
                         if(json.result){
                             $("#gname").empty();
                             showgname();
-                            $(".game").val('');
+                            $("#fm1").find('input').val('');
                         }
                     },
                     error: function() {
@@ -135,11 +135,11 @@
     </table>
 
     <form id="fm1" method="post">
-        <p>ゲーム名：<input type="text" name="gname" class="game"></p>
-        <p>プレイ可能な人数(最小)：<input type="number" name="playersnumbermin" class="game"></p>
-        <p>プレイ可能な人数(最大)：<input type="number" name="playersnumbermax" class="game"></p>
-        <p>標準プレイ時間：<input type="number" name="playtime" class="game"></p>
-        <p>推奨年齢：<input type="number" name="recommendedage" class="game"></p>
+        <p>ゲーム名：<input type="text" name="gname"></p>
+        <p>プレイ可能な人数(最小)：<input type="number" name="playersnumbermin"></p>
+        <p>プレイ可能な人数(最大)：<input type="number" name="playersnumbermax"></p>
+        <p>標準プレイ時間：<input type="number" name="playtime"></p>
+        <p>推奨年齢：<input type="number" name="recommendedage"></p>
 
         <input type="submit" value="追加" id="submit">
     </form>
