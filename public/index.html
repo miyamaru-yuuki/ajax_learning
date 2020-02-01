@@ -67,7 +67,7 @@
                     dataType: "json",
                     success : function(json) {
                         //成功時の処理
-                        if(json){
+                        if(json.result){
                             $("#gname").empty();
                             showgname();
                         }
