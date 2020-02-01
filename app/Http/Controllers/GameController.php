@@ -99,10 +99,15 @@ class GameController extends Controller
      */
     public function destroy($gid)
     {
-        $game = new Game();
-        $gameData = $game->find($gid);
-        $gameData->delete();
+        if($gid) {
+            $game = new Game();
+            $gameData = $game->find($gid);
+            $gameData->delete();
+            $ret = true;
+        }else{
+            $ret = false;
+        }
 
-        return redirect('/api/game');
+        return response()->json(['result' => $ret]);
     }
 }
