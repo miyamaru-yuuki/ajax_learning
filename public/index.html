@@ -25,7 +25,7 @@
                 success : function(json) {
                     //成功時の処理
                     json.gameData.forEach(function(data){
-                        $("#gname").append( '<tr><td>' +'<a href="' +data.gid +'" class="gname">'+data.gname+ '</a></td><td>' +'<a href="' +data.gid +'" class="del">削除</a></td></tr>')
+                        $("#gname").append( '<tr><td>' +'<a href="' +data.gid +'" class="gname">'+data.gname+ '</a></td><td>' +'<a href="' +data.gid +'" class="del">削除</a></td><td>' +'<a href="' +data.gid +'" class="edit">変更</a></td></tr>')
                     });
                 }
             });
@@ -76,6 +76,31 @@
                 return false;
             });
 
+            $(document).on("click",".edit",function(){
+                var gid = $(this).attr("href");
+                $.ajax({
+                    url: "/api/game/" +gid+ "/edit",
+                    type: "GET",
+                    async: true,
+                    data: {"gid": gid},
+                    dataType: "json",
+                    success: function (json) {
+                        //成功時の処理
+                        $("[name=gname]").val(json.gameData.gname)
+                        $("[name=playersnumbermin]").val(json.gameData.playersnumbermin)
+                        $("[name=playersnumbermax]").val(json.gameData.playersnumbermax)
+                        $("[name=playtime]").val(json.gameData.playtime)
+                        $("[name=recommendedage]").val(json.gameData.recommendedage)
+
+                        $("#submit").val('変更');
+                    },
+                    error: function () {
+                        alert('http通信に失敗しました');
+                    }
+                });
+                return false;
+            });
+
             $('#fm1').submit(function(){
 
                 var gname = $("[name=gname]").val();
@@ -117,7 +142,7 @@
 <main>
 
     <table>
-        <thead><tr><th>ゲーム名</th><th>削除</th></tr></thead>
+        <thead><tr><th>ゲーム名</th><th>削除</th><th>変更</th></tr></thead>
         <tbody id="gname"></tbody>
     </table>
 
