@@ -86,6 +86,7 @@
                     dataType: "json",
                     success: function (json) {
                         //成功時の処理
+                        $("#gid").val(json.gameData.gid)
                         $("[name=gname]").val(json.gameData.gname)
                         $("[name=playersnumbermin]").val(json.gameData.playersnumbermin)
                         $("[name=playersnumbermax]").val(json.gameData.playersnumbermax)
@@ -103,30 +104,53 @@
 
             $('#fm1').submit(function(){
 
+                var gid = $("#gid").val();
                 var gname = $("[name=gname]").val();
                 var playersnumbermin = $("[name=playersnumbermin]").val();
                 var playersnumbermax = $("[name=playersnumbermax]").val();
                 var playtime = $("[name=playtime]").val();
                 var recommendedage = $("[name=recommendedage]").val();
 
-                $.ajax({
-                    url     : "/api/game",
-                    type    : "POST",
-                    async   : true,
-                    data    : {gname:gname,playersnumbermin:playersnumbermin,playersnumbermax:playersnumbermax,playtime:playtime,recommendedage:recommendedage},
-                    dataType: "json",
-                    success : function(json) {
-                        //成功時の処理
-                        if(json.result){
-                            $("#gname").empty();
-                            showgname();
-                            $("#fm1 input[name]").val('');
+                if(gid !== "0"){
+                    $.ajax({
+                        url     : "/api/game/" + gid,
+                        type    : "POST",
+                        async   : true,
+                        data    : {gname:gname,playersnumbermin:playersnumbermin,playersnumbermax:playersnumbermax,playtime:playtime,recommendedage:recommendedage,"_method":"PUT"},
+                        dataType: "json",
+                        success : function(json) {
+                            //成功時の処理
+                            if(json.result){
+                                $("#gname").empty();
+                                showgname();
+                                $("#fm1 input[name]").val('');
+                                $("#submit").val('追加');
+                            }
+                        },
+                        error: function() {
+                            alert('http通信に失敗しました');
                         }
-                    },
-                    error: function() {
-                        alert('http通信に失敗しました');
-                    }
-                });
+                    });
+                }else{
+                    $.ajax({
+                        url     : "/api/game",
+                        type    : "POST",
+                        async   : true,
+                        data    : {gname:gname,playersnumbermin:playersnumbermin,playersnumbermax:playersnumbermax,playtime:playtime,recommendedage:recommendedage},
+                        dataType: "json",
+                        success : function(json) {
+                            //成功時の処理
+                            if(json.result){
+                                $("#gname").empty();
+                                showgname();
+                                $("#fm1 input[name]").val('');
+                            }
+                        },
+                        error: function() {
+                            alert('http通信に失敗しました');
+                        }
+                    });
+                }
                 return false;
             });
 
@@ -161,6 +185,7 @@
 
     <form id="fm1" method="post">
         <p>ゲーム名：<input type="text" name="gname"></p>
+        <input type="hidden" name="gid" value=0 id="gid">
         <p>プレイ可能な人数(最小)：<input type="number" name="playersnumbermin"></p>
         <p>プレイ可能な人数(最大)：<input type="number" name="playersnumbermax"></p>
         <p>標準プレイ時間：<input type="number" name="playtime"></p>

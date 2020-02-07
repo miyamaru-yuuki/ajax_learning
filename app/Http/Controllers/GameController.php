@@ -89,9 +89,28 @@ class GameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $gid)
     {
-        //
+        $gname = $request->input('gname');
+        $playersnumbermin = $request->input('playersnumbermin');
+        $playersnumbermax = $request->input('playersnumbermax');
+        $playtime = $request->input('playtime');
+        $recommendedage = $request->input('recommendedage');
+
+        if($gid && $gname && $playersnumbermin && $playersnumbermax && $playtime && $recommendedage){
+            $data = Game::find($gid);
+            $data->gname = $gname;
+            $data->playersnumbermin = $playersnumbermin;
+            $data->playersnumbermax = $playersnumbermax;
+            $data->playtime = $playtime;
+            $data->recommendedage = $recommendedage;
+            $data->save();
+            $ret = true;
+        }else{
+            $ret = false;
+        }
+
+        return response()->json(['result' => $ret]);
     }
 
     /**
