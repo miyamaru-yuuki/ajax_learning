@@ -97,7 +97,7 @@ class GameController extends Controller
         $playtime = $request->input('playtime');
         $recommendedage = $request->input('recommendedage');
 
-        if($gid && $gname && $playersnumbermin && $playersnumbermax && $playtime && $recommendedage){
+        if($gname && $playersnumbermin && $playersnumbermax && $playtime && $recommendedage){
             $data = Game::find($gid);
             $data->gname = $gname;
             $data->playersnumbermin = $playersnumbermin;
