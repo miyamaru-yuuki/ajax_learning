@@ -79,7 +79,7 @@
             $(document).on("click",".edit",function(){
                 var gid = $(this).attr("href");
                 $.ajax({
-                    url: "/api/game/" +gid+ "/edit",
+                    url: "/api/game/" +gid,
                     type: "GET",
                     async: true,
                     data: {"gid": gid},
@@ -185,8 +185,8 @@
     </table>
 
     <form id="fm1" method="post">
-        <p>ゲーム名：<input type="text" name="gname"></p>
         <input type="hidden" name="gid" value=0 id="gid">
+        <p>ゲーム名：<input type="text" name="gname"></p>
         <p>プレイ可能な人数(最小)：<input type="number" name="playersnumbermin"></p>
         <p>プレイ可能な人数(最大)：<input type="number" name="playersnumbermax"></p>
         <p>標準プレイ時間：<input type="number" name="playtime"></p>
