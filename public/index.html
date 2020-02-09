@@ -13,6 +13,7 @@
     <script type="text/javascript">
         $(function(){
             // ここにソースを書きます。
+
             showgname();
 
             function showgname(){
@@ -29,6 +30,50 @@
                     });
                 }
             });
+            }
+
+            function addgame(gname,playersnumbermin,playersnumbermax,playtime,recommendedage){
+                $.ajax({
+                    url     : "/api/game",
+                    type    : "POST",
+                    async   : true,
+                    data    : {gname:gname,playersnumbermin:playersnumbermin,playersnumbermax:playersnumbermax,playtime:playtime,recommendedage:recommendedage},
+                    dataType: "json",
+                    success : function(json) {
+                        //成功時の処理
+                        if(json.result){
+                            $("#gname").empty();
+                            showgname();
+                            $("#fm1 input[name]").val('');
+                        }
+                    },
+                    error: function() {
+                        alert('http通信に失敗しました');
+                    }
+                });
+            }
+
+            function editgame(gid,gname,playersnumbermin,playersnumbermax,playtime,recommendedage){
+                $.ajax({
+                    url     : "/api/game/" + gid,
+                    type    : "POST",
+                    async   : true,
+                    data    : {gname:gname,playersnumbermin:playersnumbermin,playersnumbermax:playersnumbermax,playtime:playtime,recommendedage:recommendedage,"_method":"PUT"},
+                    dataType: "json",
+                    success : function(json) {
+                        //成功時の処理
+                        if(json.result){
+                            $("#gname").empty();
+                            showgname();
+                            $("#fm1 input[name]").val('');
+                            $("#submit").val('追加');
+                            $("#gid").val(0);
+                        }
+                    },
+                    error: function() {
+                        alert('http通信に失敗しました');
+                    }
+                });
             }
 
             $(document).on("click",".gname",function(){
@@ -112,45 +157,9 @@
                 var recommendedage = $("[name=recommendedage]").val();
 
                 if(gid !== "0"){
-                    $.ajax({
-                        url     : "/api/game/" + gid,
-                        type    : "POST",
-                        async   : true,
-                        data    : {gname:gname,playersnumbermin:playersnumbermin,playersnumbermax:playersnumbermax,playtime:playtime,recommendedage:recommendedage,"_method":"PUT"},
-                        dataType: "json",
-                        success : function(json) {
-                            //成功時の処理
-                            if(json.result){
-                                $("#gname").empty();
-                                showgname();
-                                $("#fm1 input[name]").val('');
-                                $("#submit").val('追加');
-                                $("#gid").val(0);
-                            }
-                        },
-                        error: function() {
-                            alert('http通信に失敗しました');
-                        }
-                    });
+                    editgame(gid,gname,playersnumbermin,playersnumbermax,playtime,recommendedage)
                 }else{
-                    $.ajax({
-                        url     : "/api/game",
-                        type    : "POST",
-                        async   : true,
-                        data    : {gname:gname,playersnumbermin:playersnumbermin,playersnumbermax:playersnumbermax,playtime:playtime,recommendedage:recommendedage},
-                        dataType: "json",
-                        success : function(json) {
-                            //成功時の処理
-                            if(json.result){
-                                $("#gname").empty();
-                                showgname();
-                                $("#fm1 input[name]").val('');
-                            }
-                        },
-                        error: function() {
-                            alert('http通信に失敗しました');
-                        }
-                    });
+                    addgame(gname,playersnumbermin,playersnumbermax,playtime,recommendedage)
                 }
                 return false;
             });
