@@ -37,15 +37,12 @@ class GameController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        $gname = $request->input('gname');
-        $playersnumbermin = $request->input('playersnumbermin');
-        $playersnumbermax = $request->input('playersnumbermax');
-        $playtime = $request->input('playtime');
-        $recommendedage = $request->input('recommendedage');
 
-        if($gname && $playersnumbermin && $playersnumbermax && $playtime && $recommendedage){
+        $params = $request->input('params');
+
+        if($params){
             $game = new Game();
-            $game->create(['gname' => $gname, 'playersnumbermin' => $playersnumbermin,'playersnumbermax' => $playersnumbermin,'playtime' => $playtime,'recommendedage' => $recommendedage]);
+            $game->create(['gname' => $params['gname'],'playersnumbermin' => $params['playersnumbermin'],'playersnumbermax' => $params['playersnumbermin'],'playtime' => $params['playtime'],'recommendedage' => $params['recommendedage']]);
             $ret = true;
         }else{
             $ret = false;
@@ -87,19 +84,15 @@ class GameController extends Controller
      */
     public function update(Request $request, $gid)
     {
-        $gname = $request->input('gname');
-        $playersnumbermin = $request->input('playersnumbermin');
-        $playersnumbermax = $request->input('playersnumbermax');
-        $playtime = $request->input('playtime');
-        $recommendedage = $request->input('recommendedage');
+        $params = $request->input('params');
 
-        if($gname && $playersnumbermin && $playersnumbermax && $playtime && $recommendedage){
-            $data = Game::find($gid);
-            $data->gname = $gname;
-            $data->playersnumbermin = $playersnumbermin;
-            $data->playersnumbermax = $playersnumbermax;
-            $data->playtime = $playtime;
-            $data->recommendedage = $recommendedage;
+        if($params){
+            $data = Game::find($params['gid']);
+            $data->gname = $params['gname'];
+            $data->playersnumbermin = $params['playersnumbermin'];
+            $data->playersnumbermax = $params['playersnumbermax'];
+            $data->playtime = $params['playtime'];
+            $data->recommendedage = $params['recommendedage'];
             $data->save();
             $ret = true;
         }else{

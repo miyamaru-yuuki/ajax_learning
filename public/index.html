@@ -37,7 +37,7 @@
                     url     : "/api/game",
                     type    : "POST",
                     async   : true,
-                    data    : {gname:params.gname,playersnumbermin:params.playersnumbermin,playersnumbermax:params.playersnumbermax,playtime:params.playtime,recommendedage:params.recommendedage},
+                    data    : {"params":params},
                     dataType: "json",
                     success : function(json) {
                         //成功時の処理
@@ -58,7 +58,7 @@
                     url     : "/api/game/" + params.gid,
                     type    : "POST",
                     async   : true,
-                    data    : {gname:params.gname,playersnumbermin:params.playersnumbermin,playersnumbermax:params.playersnumbermax,playtime:params.playtime,recommendedage:params.recommendedage,"_method":"PUT"},
+                    data    : {"params":params,"_method":"PUT"},
                     dataType: "json",
                     success : function(json) {
                         //成功時の処理
@@ -167,16 +167,16 @@
 
             $('#fm1').submit(function(){
 
-                var gid = $("#gid").val();
-                var gname = $("[name=gname]").val();
-                var playersnumbermin = $("[name=playersnumbermin]").val();
-                var playersnumbermax = $("[name=playersnumbermax]").val();
-                var playtime = $("[name=playtime]").val();
-                var recommendedage = $("[name=recommendedage]").val();
+                var params = {
+                    gid:$("#gid").val(),
+                    gname:$("[name=gname]").val(),
+                    playersnumbermin:$("[name=playersnumbermin]").val(),
+                    playersnumbermax:$("[name=playersnumbermax]").val(),
+                    playtime:$("[name=playtime]").val(),
+                    recommendedage:$("[name=recommendedage]").val()
+                };
 
-                var params = {gid:gid,gname:gname,playersnumbermin:playersnumbermin,playersnumbermax:playersnumbermax,playtime:playtime,recommendedage:recommendedage};
-
-                if(gid !== "0"){
+                if(params.gid !== "0"){
                     editGame(params)
                 }else{
                     addGame(params)
