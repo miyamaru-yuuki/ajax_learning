@@ -32,12 +32,12 @@
             });
             }
 
-            function addGame(gname,playersnumbermin,playersnumbermax,playtime,recommendedage){
+            function addGame(params){
                 $.ajax({
                     url     : "/api/game",
                     type    : "POST",
                     async   : true,
-                    data    : {gname:gname,playersnumbermin:playersnumbermin,playersnumbermax:playersnumbermax,playtime:playtime,recommendedage:recommendedage},
+                    data    : {gname:params.gname,playersnumbermin:params.playersnumbermin,playersnumbermax:params.playersnumbermax,playtime:params.playtime,recommendedage:params.recommendedage},
                     dataType: "json",
                     success : function(json) {
                         //成功時の処理
@@ -53,12 +53,12 @@
                 });
             }
 
-            function editGame(gid,gname,playersnumbermin,playersnumbermax,playtime,recommendedage){
+            function editGame(params){
                 $.ajax({
-                    url     : "/api/game/" + gid,
+                    url     : "/api/game/" + params.gid,
                     type    : "POST",
                     async   : true,
-                    data    : {gname:gname,playersnumbermin:playersnumbermin,playersnumbermax:playersnumbermax,playtime:playtime,recommendedage:recommendedage,"_method":"PUT"},
+                    data    : {gname:params.gname,playersnumbermin:params.playersnumbermin,playersnumbermax:params.playersnumbermax,playtime:params.playtime,recommendedage:params.recommendedage,"_method":"PUT"},
                     dataType: "json",
                     success : function(json) {
                         //成功時の処理
@@ -174,10 +174,12 @@
                 var playtime = $("[name=playtime]").val();
                 var recommendedage = $("[name=recommendedage]").val();
 
+                var params = {gid:gid,gname:gname,playersnumbermin:playersnumbermin,playersnumbermax:playersnumbermax,playtime:playtime,recommendedage:recommendedage};
+
                 if(gid !== "0"){
-                    editGame(gid,gname,playersnumbermin,playersnumbermax,playtime,recommendedage)
+                    editGame(params)
                 }else{
-                    addGame(gname,playersnumbermin,playersnumbermax,playtime,recommendedage)
+                    addGame(params)
                 }
                 return false;
             });
