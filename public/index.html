@@ -13,7 +13,7 @@
     <script type="text/javascript">
         $(function(){
 
-            function getgame(){
+            function showgame(){
             $.ajax({
                 url     : "/api/game/",
                 type    : "GET",
@@ -40,7 +40,7 @@
                         //成功時の処理
                         if(json.result){
                             $("#gname").empty();
-                            getgame();
+                            showgame();
                             $("#fm1 input[name]").val('');
                         }
                     },
@@ -61,7 +61,7 @@
                         //成功時の処理
                         if(json.result){
                             $("#gname").empty();
-                            getgame();
+                            showgame();
                             $("#fm1 input[name]").val('');
                             $("#submit").val('追加');
                             $("#gid").val(0);
@@ -84,7 +84,7 @@
                         //成功時の処理
                         if (json.result) {
                             $("#gname").empty();
-                            getgame();
+                            showgame();
                         }
                     },
                     error: function () {
@@ -93,60 +93,59 @@
                 });
             }
 
-            function getgamesingle(gid,mode){
-                if(mode == 'td'){
-                    $.ajax({
-                        url     : "/api/game/" +gid,
-                        type    : "GET",
-                        async   : true,
-                        data    : null,
-                        dataType: "json",
-                        success : function(json) {
-                            //成功時の処理
-                            $("#gnametd").text(json.gameData.gname)
-                            $("#playersnumbermintd").text(json.gameData.playersnumbermin)
-                            $("#playersnumbermaxtd").text(json.gameData.playersnumbermax)
-                            $("#playtimetd").text(json.gameData.playtime)
-                            $("#recommendedagetd").text(json.gameData.recommendedage)
-                        }
-                    });
-                }else if(mode == 'text'){
-                    $.ajax({
-                        url: "/api/game/" +gid,
-                        type: "GET",
-                        async: true,
-                        data: {"gid": gid},
-                        dataType: "json",
-                        success: function (json) {
-                            //成功時の処理
-                            $("#gid").val(json.gameData.gid)
-                            $("[name=gname]").val(json.gameData.gname)
-                            $("[name=playersnumbermin]").val(json.gameData.playersnumbermin)
-                            $("[name=playersnumbermax]").val(json.gameData.playersnumbermax)
-                            $("[name=playtime]").val(json.gameData.playtime)
-                            $("[name=recommendedage]").val(json.gameData.recommendedage)
-
-                            $("#submit").val('変更');
-                        },
-                        error: function () {
-                            alert('http通信に失敗しました');
-                        }
-                    });
-                }
-
+            function showgamesingletd(gid){
+                $.ajax({
+                    url: "/api/game/" + gid,
+                    type: "GET",
+                    async: true,
+                    data: null,
+                    dataType: "json",
+                    success: function (json) {
+                        //成功時の処理
+                        $("#gnametd").text(json.gameData.gname)
+                        $("#playersnumbermintd").text(json.gameData.playersnumbermin)
+                        $("#playersnumbermaxtd").text(json.gameData.playersnumbermax)
+                        $("#playtimetd").text(json.gameData.playtime)
+                        $("#recommendedagetd").text(json.gameData.recommendedage)
+                    }
+                });
             }
 
-            getgame();
+            function showgamesingletext(gid){
+                $.ajax({
+                    url: "/api/game/" +gid,
+                    type: "GET",
+                    async: true,
+                    data: {"gid": gid},
+                    dataType: "json",
+                    success: function (json) {
+                        //成功時の処理
+                        $("#gid").val(json.gameData.gid)
+                        $("[name=gname]").val(json.gameData.gname)
+                        $("[name=playersnumbermin]").val(json.gameData.playersnumbermin)
+                        $("[name=playersnumbermax]").val(json.gameData.playersnumbermax)
+                        $("[name=playtime]").val(json.gameData.playtime)
+                        $("[name=recommendedage]").val(json.gameData.recommendedage)
+
+                        $("#submit").val('変更');
+                    },
+                    error: function () {
+                        alert('http通信に失敗しました');
+                    }
+                });
+            }
+
+            showgame();
 
             $(document).on("click",".gname",function(){
                 var gid = $(this).attr("href");
-                getgamesingle(gid,'td')
+                showgamesingletd(gid)
                 return false;
             });
 
             $(document).on("click",".edit",function(){
                 var gid = $(this).attr("href");
-                getgamesingle(gid,'text')
+                showgamesingletext(gid)
                 return false;
             });
 
