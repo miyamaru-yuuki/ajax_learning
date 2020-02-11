@@ -58,7 +58,7 @@
                     url     : "/api/game/" + params.gid,
                     type    : "POST",
                     async   : true,
-                    data    : {"params":params,"_method":"PUT"},
+                    data    : params,
                     dataType: "json",
                     success : function(json) {
                         //成功時の処理
@@ -177,6 +177,7 @@
                 };
 
                 if(params.gid !== "0"){
+                    params['_method'] = 'PUT';
                     editGame(params)
                 }else{
                     addGame(params)
