@@ -54,6 +54,7 @@
             }
 
             function editGame(params){
+                params['_method'] = 'PUT';
                 $.ajax({
                     url     : "/api/game/" + params.gid,
                     type    : "POST",
@@ -177,7 +178,6 @@
                 };
 
                 if(params.gid !== "0"){
-                    params['_method'] = 'PUT';
                     editGame(params)
                 }else{
                     addGame(params)
