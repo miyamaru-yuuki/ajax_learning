@@ -97,7 +97,7 @@
                 });
             }
 
-            function showGameSingleList(gid){
+            function showGameSingle(gid,f){
                 $.ajax({
                     url: "/api/game/" + gid,
                     type: "GET",
@@ -106,32 +106,7 @@
                     dataType: "json",
                     success: function (json) {
                         //成功時の処理
-                        $("#gnametd").text(json.gameData.gname)
-                        $("#playersnumbermintd").text(json.gameData.playersnumbermin)
-                        $("#playersnumbermaxtd").text(json.gameData.playersnumbermax)
-                        $("#playtimetd").text(json.gameData.playtime)
-                        $("#recommendedagetd").text(json.gameData.recommendedage)
-                    }
-                });
-            }
-
-            function showGameSingleTextbox(gid){
-                $.ajax({
-                    url: "/api/game/" +gid,
-                    type: "GET",
-                    async: true,
-                    data: {"gid": gid},
-                    dataType: "json",
-                    success: function (json) {
-                        //成功時の処理
-                        $("#gid").val(json.gameData.gid)
-                        $("[name=gname]").val(json.gameData.gname)
-                        $("[name=playersnumbermin]").val(json.gameData.playersnumbermin)
-                        $("[name=playersnumbermax]").val(json.gameData.playersnumbermax)
-                        $("[name=playtime]").val(json.gameData.playtime)
-                        $("[name=recommendedage]").val(json.gameData.recommendedage)
-
-                        $("#submit").val('変更');
+                        f(json);
                     },
                     error: function () {
                         alertError()
@@ -143,17 +118,36 @@
                 alert('http通信に失敗しました');
             }
 
+            var text = function(){
+                $("#gnametd").text(json.gameData.gname)
+                $("#playersnumbermintd").text(json.gameData.playersnumbermin)
+                $("#playersnumbermaxtd").text(json.gameData.playersnumbermax)
+                $("#playtimetd").text(json.gameData.playtime)
+                $("#recommendedagetd").text(json.gameData.recommendedage)
+            };
+
+            var list = function(){
+                $("#gid").val(json.gameData.gid)
+                $("[name=gname]").val(json.gameData.gname)
+                $("[name=playersnumbermin]").val(json.gameData.playersnumbermin)
+                $("[name=playersnumbermax]").val(json.gameData.playersnumbermax)
+                $("[name=playtime]").val(json.gameData.playtime)
+                $("[name=recommendedage]").val(json.gameData.recommendedage)
+
+                $("#submit").val('変更');
+            };
+
             showGame();
 
             $(document).on("click",".gname",function(){
                 var gid = $(this).attr("href");
-                showGameSingleList(gid)
+                showGameSingle(gid,list)
                 return false;
             });
 
             $(document).on("click",".edit",function(){
                 var gid = $(this).attr("href");
-                showGameSingleTextbox(gid)
+                showGameSingle(gid,text)
                 return false;
             });
 
