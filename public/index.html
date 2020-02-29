@@ -97,17 +97,14 @@
                 });
             }
 
-            function showGameSingle(gid,f){
+            function showGameSingle(gid,json,f){
                 $.ajax({
                     url: "/api/game/" + gid,
                     type: "GET",
                     async: true,
                     data: null,
                     dataType: "json",
-                    success: function (gid,f) {
-                        //成功時の処理
-                        f(gid);
-                    },
+                    success: f(gid,json),
                     error: function () {
                         alertError()
                     }
@@ -123,7 +120,7 @@
             $(document).on("click",".gname",function(){
                 var gid = $(this).attr("href");
                 showGameSingle(gid,
-                    function(gid){
+                    function(gid,json){
                         $("#gid").val(json.gameData.gid)
                         $("[name=gname]").val(json.gameData.gname)
                         $("[name=playersnumbermin]").val(json.gameData.playersnumbermin)
@@ -140,7 +137,7 @@
             $(document).on("click",".edit",function(){
                 var gid = $(this).attr("href");
                 showGameSingle(gid,
-                    function(gid){
+                    function (gid,json){
                         $("#gnametd").text(json.gameData.gname)
                         $("#playersnumbermintd").text(json.gameData.playersnumbermin)
                         $("#playersnumbermaxtd").text(json.gameData.playersnumbermax)
