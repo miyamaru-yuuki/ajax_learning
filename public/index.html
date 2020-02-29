@@ -97,17 +97,14 @@
                 });
             }
 
-            function showGameSingle(gid,f){
+            function showGameSingle(gid,outGameData){
                 $.ajax({
                     url: "/api/game/" + gid,
                     type: "GET",
                     async: true,
                     data: null,
                     dataType: "json",
-                    success: function (json) {
-                    //成功時の処理
-                        f(json);
-                    },
+                    success: outGameData(json),
                     error: function () {
                         alertError()
                     }
