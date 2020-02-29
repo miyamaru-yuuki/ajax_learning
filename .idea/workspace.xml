@@ -40,8 +40,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="136" column="26" selection-start-line="136" selection-start-column="26" selection-end-line="136" selection-end-column="26" />
+            <state relative-caret-position="203">
+              <caret line="109" column="22" lean-forward="true" selection-start-line="109" selection-start-column="22" selection-end-line="109" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -204,12 +204,6 @@
               <item name="ajax_learning" type="b2602c69:ProjectViewProjectNode" />
               <item name="ajax_learning" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ajax_learning" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ajax_learning" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ajax_learning" type="b2602c69:ProjectViewProjectNode" />
@@ -378,18 +372,22 @@
       <workItem from="1581726644435" duration="1000" />
       <workItem from="1581726679385" duration="534000" />
       <workItem from="1581727347024" duration="517000" />
-      <workItem from="1581728844867" duration="330000" />
+      <workItem from="1581728844867" duration="878000" />
+      <workItem from="1582440098047" duration="221000" />
+      <workItem from="1582440532665" duration="300000" />
+      <workItem from="1582440859560" duration="200000" />
+      <workItem from="1582441202730" duration="6476000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40112000" />
+    <option name="totallyTimeSpent" value="47857000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="834" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18383405" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19241774" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -468,8 +466,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="136" column="26" selection-start-line="136" selection-start-column="26" selection-end-line="136" selection-end-column="26" />
+        <state relative-caret-position="203">
+          <caret line="109" column="22" lean-forward="true" selection-start-line="109" selection-start-column="22" selection-end-line="109" selection-end-column="22" />
         </state>
       </provider>
     </entry>

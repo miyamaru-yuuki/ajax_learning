@@ -104,9 +104,9 @@
                     async: true,
                     data: null,
                     dataType: "json",
-                    success: function (json) {
+                    success: function (gid,f) {
                         //成功時の処理
-                        f(json);
+                        f(gid);
                     },
                     error: function () {
                         alertError()
@@ -123,7 +123,7 @@
             $(document).on("click",".gname",function(){
                 var gid = $(this).attr("href");
                 showGameSingle(gid,
-                    function(){
+                    function(gid){
                         $("#gid").val(json.gameData.gid)
                         $("[name=gname]").val(json.gameData.gname)
                         $("[name=playersnumbermin]").val(json.gameData.playersnumbermin)
@@ -140,7 +140,7 @@
             $(document).on("click",".edit",function(){
                 var gid = $(this).attr("href");
                 showGameSingle(gid,
-                    function(){
+                    function(gid){
                         $("#gnametd").text(json.gameData.gname)
                         $("#playersnumbermintd").text(json.gameData.playersnumbermin)
                         $("#playersnumbermaxtd").text(json.gameData.playersnumbermax)
