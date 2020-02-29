@@ -104,7 +104,10 @@
                     async: true,
                     data: null,
                     dataType: "json",
-                    success: outGameData(json),
+                    success: function (json) {
+                    //成功時の処理
+                        outGameData(json);
+                    },
                     error: function () {
                         alertError()
                     }
