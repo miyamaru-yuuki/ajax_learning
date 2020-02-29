@@ -97,14 +97,17 @@
                 });
             }
 
-            function showGameSingle(gid,json,f){
+            function showGameSingle(gid,f){
                 $.ajax({
                     url: "/api/game/" + gid,
                     type: "GET",
                     async: true,
                     data: null,
                     dataType: "json",
-                    success: f(gid,json),
+                    success: function (json) {
+                    //成功時の処理
+                        f(json);
+                    },
                     error: function () {
                         alertError()
                     }
@@ -120,15 +123,12 @@
             $(document).on("click",".gname",function(){
                 var gid = $(this).attr("href");
                 showGameSingle(gid,
-                    function(gid,json){
-                        $("#gid").val(json.gameData.gid)
-                        $("[name=gname]").val(json.gameData.gname)
-                        $("[name=playersnumbermin]").val(json.gameData.playersnumbermin)
-                        $("[name=playersnumbermax]").val(json.gameData.playersnumbermax)
-                        $("[name=playtime]").val(json.gameData.playtime)
-                        $("[name=recommendedage]").val(json.gameData.recommendedage)
-
-                        $("#submit").val('変更');
+                    function (json){
+                        $("#gnametd").text(json.gameData.gname)
+                        $("#playersnumbermintd").text(json.gameData.playersnumbermin)
+                        $("#playersnumbermaxtd").text(json.gameData.playersnumbermax)
+                        $("#playtimetd").text(json.gameData.playtime)
+                        $("#recommendedagetd").text(json.gameData.recommendedage)
                     }
                 )
                 return false;
@@ -137,12 +137,15 @@
             $(document).on("click",".edit",function(){
                 var gid = $(this).attr("href");
                 showGameSingle(gid,
-                    function (gid,json){
-                        $("#gnametd").text(json.gameData.gname)
-                        $("#playersnumbermintd").text(json.gameData.playersnumbermin)
-                        $("#playersnumbermaxtd").text(json.gameData.playersnumbermax)
-                        $("#playtimetd").text(json.gameData.playtime)
-                        $("#recommendedagetd").text(json.gameData.recommendedage)
+                    function(json){
+                        $("#gid").val(json.gameData.gid)
+                        $("[name=gname]").val(json.gameData.gname)
+                        $("[name=playersnumbermin]").val(json.gameData.playersnumbermin)
+                        $("[name=playersnumbermax]").val(json.gameData.playersnumbermax)
+                        $("[name=playtime]").val(json.gameData.playtime)
+                        $("[name=recommendedage]").val(json.gameData.recommendedage)
+
+                        $("#submit").val('変更');
                     }
                 )
                 return false;
