@@ -97,17 +97,14 @@
                 });
             }
 
-            function showGameSingle(gid,outGameData){
+            function showGameSingle(obj){
                 $.ajax({
-                    url: "/api/game/" + gid,
+                    url: "/api/game/" + obj.gid,
                     type: "GET",
                     async: true,
                     data: null,
                     dataType: "json",
-                    success: function (json) {
-                    //成功時の処理
-                        outGameData(json);
-                    },
+                    success: obj.out(),
                     error: function () {
                         alertError()
                     }
@@ -122,22 +119,22 @@
 
             $(document).on("click",".gname",function(){
                 var gid = $(this).attr("href");
-                showGameSingle(gid,
-                    function (json){
+                showGameSingle({gid:gid,
+                    out:function (json){
                         $("#gnametd").text(json.gameData.gname)
                         $("#playersnumbermintd").text(json.gameData.playersnumbermin)
                         $("#playersnumbermaxtd").text(json.gameData.playersnumbermax)
                         $("#playtimetd").text(json.gameData.playtime)
                         $("#recommendedagetd").text(json.gameData.recommendedage)
-                    }
-                )
+                    }}
+                );
                 return false;
             });
 
             $(document).on("click",".edit",function(){
                 var gid = $(this).attr("href");
-                showGameSingle(gid,
-                    function(json){
+                showGameSingle({gid:gid,
+                    out:function(json){
                         $("#gid").val(json.gameData.gid)
                         $("[name=gname]").val(json.gameData.gname)
                         $("[name=playersnumbermin]").val(json.gameData.playersnumbermin)
@@ -146,8 +143,8 @@
                         $("[name=recommendedage]").val(json.gameData.recommendedage)
 
                         $("#submit").val('変更');
-                    }
-                )
+                    }}
+                );
                 return false;
             });
 

@@ -19,13 +19,12 @@
             // var num1 = 20;
             // var s = test;
             // s(num1);
-            var obj = {sname:"りんご",tanka:100,show:function(){
-                alert("abc");
-            }};
             function test2(obj){
                 obj.show();
             }
-            test2(obj);
+            test2({sname:"りんご",tanka:100,show:function(){
+                    alert("abc");
+            }});
         })
     </script>
 </head>
