@@ -22,9 +22,10 @@
             function test2(obj){
                 obj.show();
             }
-            test2({sname:"りんご",tanka:100,show:function out(){
-                    alert("abc");
-            }});
+            function out(){
+                alert("abc");
+            }
+            test2({sname:"りんご",tanka:100,show:out()});
         })
     </script>
 </head>
