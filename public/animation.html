@@ -3,33 +3,28 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
-    <title>JSテスト</title>
+    <title>アニメーション</title>
     <style>
     </style>
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
-
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <!--<script src="js/jquery-3.3.1.min.js"></script>-->
     <script type="text/javascript">
         $(function(){
-            function test2(obj){
-                obj.show();
-            }
-            function out(){
-                alert("abc");
-            }
-            test2({sname:"りんご",tanka:100,show:out});
+            $(document).on("click","#btn1",function(){
+                $("#shikaku").css({"color":"blue"});
+            });
         })
     </script>
 </head>
 <body>
 <header>
-    <h1>JSテスト</h1>
+    <h1>アニメーション</h1>
 </header>
 <nav>
 </nav>
 <main>
-
+    <div id="shikaku">ブロック</div>
+    <button id="btn1">ボタン1</button>
 </main>
 <footer>
 </footer>
