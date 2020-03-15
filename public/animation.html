@@ -13,9 +13,10 @@
             $("#shikaku").css({"color":"blue"});
         }
         function jqmain(){
-            $(document).on("click","#btn1",blueChange);
+            $('#btn1').click(function() {
+                blueChange();
+            })
         }
-
         jqmain()
     </script>
 </head>
