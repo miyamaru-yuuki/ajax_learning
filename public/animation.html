@@ -9,8 +9,9 @@
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script type="text/javascript">
+        var styleSet={"color":"blue"};
         function blueChange(){
-            $("#shikaku").css({"color":"blue"});
+            $("#shikaku").css(styleSet);
         }
         function jqmain(){
             $("#btn1").click(blueChange);
