@@ -19,7 +19,13 @@
             styleSet.color = "red";
             styleSet.width = "100px";
             $("#shikaku").css(styleSet);
-            $("#btn1").click(blueChange);
+            $("#btn1").click(blueChange,
+                function(){
+                    var styleSet={};
+                    styleSet.width = "300px";
+                    $("#shikaku").css(styleSet);
+                }
+                );
         }
         $(jqmain)
     </script>
