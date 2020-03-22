@@ -15,12 +15,12 @@
             $("#shikaku").css(styleSet);
         }
         function widthChange(){
-            var styleSet={};
-            styleSet.width = "300px";
-            $("#shikaku").animate(styleSet,function(){
-                var styleSet={};
-                styleSet.backgroundColor = "yellow";
-                $("#shikaku").css(styleSet);
+            // var styleSet={};
+            // styleSet.width = "300px";
+            $("#shikaku").animate({"width":"300px"},function(){
+                // var styleSet={};
+                // styleSet.backgroundColor = "yellow";
+                $("#shikaku").css({"backgroundColor":"yellow"});
             });
         }
         function jqmain(){
