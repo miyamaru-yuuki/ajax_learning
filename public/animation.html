@@ -23,12 +23,18 @@
                 $("#shikaku").css({"backgroundColor":"yellow"});
             });
         }
+        function selectChange(){
+            $("#shikaku").animate({"backgroundColor":"red"},function(){
+                var val = $('[name=color]').val();
+                $("#shikaku").css({"backgroundColor":val});
+            });
+        }
         function jqmain(){
             var styleSet={};
             styleSet.backgroundColor = "red";
             styleSet.width = "100px";
             $("#shikaku").css(styleSet);
-            $("#btn1").click(widthChange);
+            $("#btn1").click(selectChange);
         }
         $(jqmain)
     </script>
@@ -36,6 +42,11 @@
 <body>
 <header>
     <h1>アニメーション</h1>
+    <select name="color">
+        <option value="blue">青</option>
+        <option value="green">緑</option>
+        <option value="yellow">黄</option>
+    </select>
 </header>
 <nav>
 </nav>
