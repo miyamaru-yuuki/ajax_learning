@@ -23,8 +23,9 @@
                 $("#shikaku").css({"backgroundColor":"yellow"});
             });
         }
-        function selectChange(){
+        function colorChange(){
             $("#shikaku").animate({"backgroundColor":"red"},function(){
+                $("#shikaku").css({"width":"300px"});
                 var val = $('[name=color]').val();
                 $("#shikaku").css({"backgroundColor":val});
             });
@@ -34,7 +35,7 @@
             styleSet.backgroundColor = "red";
             styleSet.width = "100px";
             $("#shikaku").css(styleSet);
-            $("#btn1").click(selectChange);
+            $("#btn1").click(colorChange);
         }
         $(jqmain)
     </script>
