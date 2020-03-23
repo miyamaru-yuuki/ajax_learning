@@ -23,18 +23,28 @@
                 $("#shikaku").css({"backgroundColor":"yellow"});
             });
         }
-        function colorChange(){
-            $("#shikaku").animate({"width":"300px"},function(){
-                var val = $('[name=color]').val();
-                $("#shikaku").css({"backgroundColor":val});
-            });
+        function colorChange(bottonon){
+            if(buttonon){
+                $("#shikaku").animate({"width":"300px"},function(){
+                    var val = $('[name=color]').val();
+                    $("#shikaku").css({"backgroundColor":val});
+                });
+                bottonon = true;
+            }else{
+                $("#shikaku").animate({"width":"100px"},function(){
+                    var val = $('[name=color]').val();
+                    $("#shikaku").css({"backgroundColor":"red"});
+                });
+
+            }
         }
         function jqmain(){
             var styleSet={};
+            var bottonon = false;
             styleSet.backgroundColor = "red";
             styleSet.width = "100px";
             $("#shikaku").css(styleSet);
-            $("#btn1").click(colorChange);
+            $("#btn1").click(colorChange(bottonon));
         }
         $(jqmain)
     </script>
