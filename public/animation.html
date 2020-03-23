@@ -29,13 +29,12 @@
                     var val = $('[name=color]').val();
                     $("#shikaku").css({"backgroundColor":val});
                 });
-                bottonon = true;
             }else{
                 $("#shikaku").animate({"width":"100px"},function(){
                     var val = $('[name=color]').val();
                     $("#shikaku").css({"backgroundColor":"red"});
                 });
-
+                bottonon = true;
             }
         }
         function jqmain(){
