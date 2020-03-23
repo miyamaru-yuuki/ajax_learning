@@ -24,8 +24,7 @@
             });
         }
         function colorChange(){
-            $("#shikaku").animate({"backgroundColor":"red"},function(){
-                $("#shikaku").css({"width":"300px"});
+            $("#shikaku").animate({"width":"300px"},function(){
                 var val = $('[name=color]').val();
                 $("#shikaku").css({"backgroundColor":val});
             });
