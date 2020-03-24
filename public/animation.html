@@ -43,9 +43,17 @@
             styleSet.backgroundColor = "red";
             styleSet.width = "100px";
             $("#shikaku").css(styleSet);
-            $("#btn1").click(colorChange(bottonon));
+            $("#btn1").click(colorChange);
         }
         $(jqmain)
+
+        function test(func){
+            func();
+        }
+        function show(){
+            alert("show");
+        }
+        test(show);
     </script>
 </head>
 <body>
