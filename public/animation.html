@@ -15,16 +15,13 @@
             $("#shikaku").css(styleSet);
         }
         function widthChange(){
-            // var styleSet={};
-            // styleSet.width = "300px";
             $("#shikaku").animate({"width":"300px"},function(){
-                // var styleSet={};
-                // styleSet.backgroundColor = "yellow";
                 $("#shikaku").css({"backgroundColor":"yellow"});
             });
         }
-        function colorChange(bottonon){
-            if(buttonon){
+        function colorChange(){
+            $('main').toggleClass('switch');
+            if($('main').hasClass('switch')){
                 $("#shikaku").animate({"width":"300px"},function(){
                     var val = $('[name=color]').val();
                     $("#shikaku").css({"backgroundColor":val});
@@ -34,26 +31,16 @@
                     var val = $('[name=color]').val();
                     $("#shikaku").css({"backgroundColor":"red"});
                 });
-                bottonon = true;
             }
         }
         function jqmain(){
             var styleSet={};
-            var bottonon = false;
             styleSet.backgroundColor = "red";
             styleSet.width = "100px";
             $("#shikaku").css(styleSet);
             $("#btn1").click(colorChange);
         }
         $(jqmain)
-
-        function test(func){
-            func();
-        }
-        function show(num){
-            alert(num);
-        }
-        test(show(10));
     </script>
 </head>
 <body>
