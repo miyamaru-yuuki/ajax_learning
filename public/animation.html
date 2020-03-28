@@ -19,8 +19,7 @@
                 $("#shikaku").css({"backgroundColor":"yellow"});
             });
         }
-        function colorChange(){
-            $('main').toggleClass('switch');
+        function getStyle(){
             if($('main').hasClass('switch')){
                 var color = $('[name=color]').val();
                 var width = "300px";
@@ -28,8 +27,13 @@
                 var color = "red";
                 var width = "100px";
             }
-            $("#shikaku").animate({"width":width},function(){
-                $("#shikaku").css({"backgroundColor":color});
+            return {"width":width,"color":color}
+        }
+        function colorChange(){
+            $('main').toggleClass('switch');
+            var ret = getStyle();
+            $("#shikaku").animate({"width":ret.width},function(){
+                $("#shikaku").css({"backgroundColor":ret.color});
             });
         }
         function jqmain(){
