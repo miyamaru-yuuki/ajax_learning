@@ -19,7 +19,12 @@
                 $("#shikaku").css({"backgroundColor":"yellow"});
             });
         }
-        function getStyle(){
+        function widthcolorChange(width,color){
+            $("#shikaku").animate({"width":width},function(){
+                $("#shikaku").css({"backgroundColor":color});
+            });
+        }
+        function getStyle(func){
             if($('main').hasClass('switch')){
                 var color = $('[name=color]').val();
                 var width = "300px";
@@ -27,14 +32,11 @@
                 var color = "red";
                 var width = "100px";
             }
-            return {"width":width,"color":color}
+            func(width,color);
         }
         function colorChange(){
             $('main').toggleClass('switch');
-            var ret = getStyle();
-            $("#shikaku").animate({"width":ret.width},function(){
-                $("#shikaku").css({"backgroundColor":ret.color});
-            });
+            getStyle(widthcolorChange);
         }
         function jqmain(){
             var styleSet={};
