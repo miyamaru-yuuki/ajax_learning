@@ -19,18 +19,18 @@
                 $("#shikaku").css({"backgroundColor":"yellow"});
             });
         }
+        function animate(px,color){
+            $("#shikaku").animate({"width":px},function(){
+                $("#shikaku").css({"backgroundColor":color});
+            });
+        }
         function colorChange(){
             $('main').toggleClass('switch');
             if($('main').hasClass('switch')){
-                $("#shikaku").animate({"width":"300px"},function(){
-                    var val = $('[name=color]').val();
-                    $("#shikaku").css({"backgroundColor":val});
-                });
+                var val = $('[name=color]').val();
+                animate("300px",val);
             }else{
-                $("#shikaku").animate({"width":"100px"},function(){
-                    var val = $('[name=color]').val();
-                    $("#shikaku").css({"backgroundColor":"red"});
-                });
+                animate("100px","red");
             }
         }
         function jqmain(){
