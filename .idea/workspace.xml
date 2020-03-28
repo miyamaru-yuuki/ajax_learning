@@ -28,7 +28,7 @@
         <entry file="file://$PROJECT_DIR$/public/animation.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="435">
-              <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+              <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -382,12 +382,12 @@
       <workItem from="1582941131287" duration="6229000" />
       <workItem from="1583023919723" duration="2679000" />
       <workItem from="1583198488316" duration="13773000" />
-      <workItem from="1584694975093" duration="10756000" />
+      <workItem from="1584694975093" duration="11694000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81811000" />
+    <option name="totallyTimeSpent" value="82749000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="834" extended-state="0" />
@@ -490,7 +490,7 @@
     <entry file="file://$PROJECT_DIR$/public/animation.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
-          <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
         </state>
       </provider>
     </entry>

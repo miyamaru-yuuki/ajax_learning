@@ -19,23 +19,23 @@
                 $("#shikaku").css({"backgroundColor":"yellow"});
             });
         }
-        function getStyle(func){
-            if($('main').hasClass('switch')){
+        function getStyle(obj){
+            if($(obj.tagName).hasClass(obj.className)){
                 var color = $('[name=color]').val();
                 var width = "300px";
             }else{
                 var color = "red";
                 var width = "100px";
             }
-            func(width,color);
+            obj.styleApply(color,width);
         }
         function colorChange(){
             $('main').toggleClass('switch');
-            getStyle(function(width,color){
+            getStyle({"tagName":"main","className":"switch","styleApply":function(color,width){
                 $("#shikaku").animate({"width":width},function(){
                     $("#shikaku").css({"backgroundColor":color});
                 });
-            });
+            }});
         }
         function jqmain(){
             var styleSet={};
