@@ -7,9 +7,7 @@
     <style>
     </style>
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
-
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <!--<script src="js/jquery-3.3.1.min.js"></script>-->
     <script type="text/javascript">
         $(function(){
 
@@ -176,6 +174,28 @@
                 return false;
             });
 
+            $(document).on("click",".address",function(){
+                var zip = $("*[name=zip]").val();
+                $.ajax({
+                    url     : "https://zipcloud.ibsnet.co.jp/api/search",
+                    type    : "GET",
+                    async   : true,
+                    data    : {"zipcode": zip},
+                    dataType: "json",
+                    success : function(json) {
+                        //成功時の処理
+                        console.log(json);
+                        // json.gameData.forEach(function(data){
+                        //     $("#gname").append( '<tr><td>' +'<a href="' +data.gid +'" class="gname">'+data.gname+ '</a></td><td>' +'<a href="' +data.gid +'" class="del">削除</a></td><td>' +'<a href="' +data.gid +'" class="edit">変更</a></td></tr>')
+                        // });
+                    },
+                    error: function() {
+                        alertError()
+                    }
+                });
+                return false;
+            });
+
         })
     </script>
 </head>
@@ -215,7 +235,8 @@
 
         <input type="submit" value="追加" id="submit">
     </form>
-
+    <div>郵便番号:<input type="text" name="zip"></div>
+    <button class="address">住所検索</button>
 </main>
 <footer>
 </footer>
